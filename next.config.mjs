@@ -12,6 +12,7 @@ const nextConfig = {
       'assets.aceternity.com',
     ],
   },
+  
 };
 
 export default nextConfig;

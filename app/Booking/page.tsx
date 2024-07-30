@@ -68,7 +68,7 @@ const Booking = () => {
           {data.map((data) => (
             <>
               <Card
-                key={`card-1-${data.id}`} // Unique key for each card
+                key={`card-1-${data.id}`}
                 isFooterBlurred
                 className="w-full h-[300px] col-span-12 sm:col-span-5"
               >

@@ -36,7 +36,7 @@ const BookingDetailPage: React.FC = () => {
         <p className="font-normal text-base text-white"></p>
         <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
           Perched high above the world, this house offers breathtaking views and a
-          unique living experience. It&apos;s a place where the sky meets home,
+          unique living experience. Its a place where the sky meets home,
           and tranquility is a way of life.
         </p>
       </div>
@@ -50,7 +50,7 @@ const BookingDetailPage: React.FC = () => {
         </p>
         <p className="font-normal text-base text-white"></p>
         <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-          A house surrounded by greenery and nature&apos;s beauty. It&apos;s the
+          A house surrounded by greenery and natures beauty. Its the
           perfect place to relax, unwind, and enjoy life.
         </p>
       </div>
@@ -64,7 +64,7 @@ const BookingDetailPage: React.FC = () => {
         </p>
         <p className="font-normal text-base text-white"></p>
         <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-          A house by the river is a place of peace and tranquility. It&apos;s the
+          A house by the river is a place of peace and tranquility. Its the
           perfect place to relax, unwind, and enjoy life.
         </p>
       </div>

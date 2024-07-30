@@ -1,6 +1,5 @@
 import type { Config } from "tailwindcss";
 import { nextui } from "@nextui-org/react";
-import flattenColorPalette from 'tailwindcss/lib/util/flattenColorPalette';
 import colors from 'tailwindcss/colors';
 
 const config: Config = {
@@ -92,7 +91,6 @@ const config: Config = {
   ],
 };
 
-// Function to add CSS variables for colors
 function addVariablesForColors({ addBase, theme }: any) {
   const allColors = flattenColorPalette(theme("colors"));
   const newVars = Object.fromEntries(
@@ -102,6 +100,35 @@ function addVariablesForColors({ addBase, theme }: any) {
   addBase({
     ":root": newVars,
   });
+}
+
+function flattenColorPalette(colors: any): { [key: string]: string } {
+  const result: { [key: string]: string } = {};
+
+  function recurse(current: any, prefix: string = '') {
+    if (typeof current !== 'object' || current === null) {
+      return;
+    }
+
+    Object.entries(current).forEach(([key, value]) => {
+      const newPrefix = prefix ? `${prefix}-${key}` : key;
+
+      if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+        recurse(value, newPrefix);
+      } else if (typeof value === 'string') {
+        result[newPrefix] = value;
+      } else if (Array.isArray(value)) {
+        value.forEach((item, index) => {
+          if (typeof item === 'string') {
+            result[`${newPrefix}-${index}`] = item;
+          }
+        });
+      }
+    });
+  }
+
+  recurse(colors);
+  return result;
 }
 
 export default config;
