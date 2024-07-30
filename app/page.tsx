@@ -201,25 +201,20 @@ export default function Home() {
       ),
     },
   ];
-  
+
   return (
     <>
-      <HeroParallax products={products} />
-      <div className="-mt-[20rem] md:-mt-[60rem]">
-      <FeaturesSection />
-      </div>
-      <div className="flex justify-center w-full items-center">
-        <div className="">
-          <StickyScroll content={content} />
-          <InfiniteMovingCards
-            items={items.map((item) => ({
-              quote: item.title,
-              name: item.name,
-              title: item.title,
-            }))}
-          />
-        </div>
-      </div>
+      <HeroParallax products={products}/>
+      <div className="md:-mt-[15rem]"></div>
+      <FeaturesSection/>
+      <StickyScroll content={content} />
+        <InfiniteMovingCards className="flex items-center min-w-full"
+          items={items.map((item) => ({
+            quote: item.title,
+            name: item.name,
+            title: item.title,
+          }))}
+        />
     </>
   );
 }

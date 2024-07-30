@@ -46,7 +46,7 @@ export default function App() {
     ];
 
     return (
-        <Navbar onMenuOpenChange={setIsMenuOpen} className="z-50">
+        <Navbar onMenuOpenChange={setIsMenuOpen} className="z-50 " >
             <NavbarContent>
                 <NavbarMenuToggle
                     aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -95,7 +95,7 @@ export default function App() {
                     </NavbarItem>
                 </NavbarContent> : <NavbarContent justify="end">  <NavbarItem>
                     <Switch
-                        className="hidden sm:block"
+                        className="hidden sm:block "
                         defaultSelected
                         onClick={() => {
                             setTheme(theme === "light" ? "dark" : "light");
@@ -117,7 +117,7 @@ export default function App() {
                     src="https://z-p3-scontent.fpnh5-5.fna.fbcdn.net/v/t39.30808-6/290529390_559007492550198_878506091995942064_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeFBAW9__uGnecW3xmWrj3jQJBpOhLK0E44kGk6EsrQTjjj2-2CkyEA37GqylPtDepOWdR87ExE1RvdlYLqaIBpX&_nc_ohc=gz2RWZQpnr8Q7kNvgGijfXT&_nc_zt=23&_nc_ht=z-p3-scontent.fpnh5-5.fna&oh=00_AYA2GuL10lSGYt2Xdj0CmVlmLvy3TALHa_4LBdfo98yf2g&oe=66A417BF"
                 /></Link> </NavbarItem> </NavbarContent>
             }
-            <NavbarMenu>
+            <NavbarMenu className="min-w-full">
 
                 {menuItems.map((item, index) => (
                     <NavbarMenuItem key={`${item}-${index}`}>
