@@ -14,9 +14,13 @@ import { string } from "three/webgpu";
 import { Phone } from "lucide-react";
 import { damp } from "three/src/math/MathUtils.js";
 import { setDate } from "date-fns";
-import { useRouter } from "next/router";
+import { useRouter, useSearchParams } from "next/navigation";
+
 
 export function BookingInfo() {
+    const searchParams = useSearchParams();
+    const id = searchParams.get("id");
+    console.log(id);
     const [delayedValue, setDelayedValue] = useState<string>("");
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -155,9 +159,8 @@ export function BookingInfo() {
                     <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-8 h-[1px] w-full" />
                     <button
                         className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
-                        onClick={handleApiCall}
                     >
-                         Booking
+                         <Link href={{ pathname: "/Booking/Invoices", query: { id , fname} }} >Booking</Link>
                         <BottomGradient /> 
                     </button>
                 </form>

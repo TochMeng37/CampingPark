@@ -216,7 +216,7 @@ const BookingDetailPage: React.FC = () => {
                 <p className={quicksand.className}>{data.description}</p>
               </ScrollShadow>
             </div>
-            <Button color="success" className="max-w-lg text-zinc-800 font-bold"> <Link href={"/Booking/Invoices"}>Booking</Link></Button>
+            <Button color="success" className="max-w-lg text-zinc-800 font-bold"> <Link href={{ pathname: "/Booking/BookingInfo", query: { id } }}>Booking</Link></Button>
           </div>
         </div>
       </div>

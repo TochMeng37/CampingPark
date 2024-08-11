@@ -49,7 +49,7 @@ const Booking = () => {
 
   return (
     <>
-      <div className="w-full flex justify-center items-center mt-5 px-4 sm:px-8">
+      <div className="w-full flex justify-center h-screen items-center mt-5 px-4 sm:px-8">
         <div className="max-w-[1200px] w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {data.map((items) => (
             <div key={items.id} className="flex flex-col">
@@ -59,7 +59,6 @@ const Booking = () => {
               >
                 <CardHeader className="absolute z-10 top-1 flex-col items-start">
                   <p className="text-tiny text-white/60 uppercase font-bold">{items.owner}</p>
-                  <h4 className="text-white/80 font-medium text-xl">{items.title}</h4>
                 </CardHeader>
                 <Image
                   removeWrapper
@@ -69,7 +68,7 @@ const Booking = () => {
                 />
                 <CardFooter className="absolute bg-white/30 bottom-0 border-t border-zinc-100/50 z-10 flex justify-between p-2">
                   <div>
-                    <p className="text-gray-400 text-tiny dark:text-white/90">{items.description}</p>
+                    <p className="text-white/80 font-medium text-xl dark:text-white/90">{items.title}</p>
                   </div>
                   <Link
                     href={{
