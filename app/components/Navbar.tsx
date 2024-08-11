@@ -21,18 +21,12 @@ export default function App() {
         },
         {
             id: 2,
-            href: "/About",
-            label: "About",
-            as: Link,
-        },
-        {
-            id: 3,
             href: "/Booking",
             label: "Booking",
             as: Link,
         },
         {
-            id: 4,
+            id: 3,
             href: "/Feedback",
             label: "Feedback",
             as: Link,
@@ -65,11 +59,6 @@ export default function App() {
                 <NavbarItem>
                     <Link color="foreground" href="/">
                         <h1 className="font-medium">Home</h1>
-                    </Link>
-                </NavbarItem>
-                <NavbarItem isActive>
-                    <Link href="/About" aria-current="page">
-                        <h1 className="font-medium">About</h1>
                     </Link>
                 </NavbarItem>
                 <NavbarItem>
@@ -114,7 +103,7 @@ export default function App() {
                     color="secondary"
                     name="Jason Hughes"
                     size="sm"
-                    src="https://z-p3-scontent.fpnh5-5.fna.fbcdn.net/v/t39.30808-6/290529390_559007492550198_878506091995942064_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeFBAW9__uGnecW3xmWrj3jQJBpOhLK0E44kGk6EsrQTjjj2-2CkyEA37GqylPtDepOWdR87ExE1RvdlYLqaIBpX&_nc_ohc=gz2RWZQpnr8Q7kNvgGijfXT&_nc_zt=23&_nc_ht=z-p3-scontent.fpnh5-5.fna&oh=00_AYA2GuL10lSGYt2Xdj0CmVlmLvy3TALHa_4LBdfo98yf2g&oe=66A417BF"
+                    src="https://z-p3-scontent.fpnh5-5.fna.fbcdn.net/v/t39.30808-6/290529390_559007492550198_878506091995942064_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeFBAW9__uGnecW3xmWrj3jQJBpOhLK0E44kGk6EsrQTjjj2-2CkyEA37GqylPtDepOWdR87ExE1RvdlYLqaIBpX&_nc_ohc=M-YySTEfLckQ7kNvgHmTeSd&_nc_zt=23&_nc_ht=z-p3-scontent.fpnh5-5.fna&oh=00_AYB43WuHL63V4u-SAaYnG8SBYPNbFzYB5_uwf0jXwm7zBw&oe=66AEDBFF"
                 /></Link> </NavbarItem> </NavbarContent>
             }
             <NavbarMenu className="min-w-full">

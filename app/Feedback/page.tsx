@@ -1,47 +1,70 @@
-"use client"
-import React from 'react'
+"use client";
+import React, { useEffect, useState } from 'react';
 import Comment from "../components/Comment";
-import { Card, CardHeader, Image } from '@nextui-org/react';
-const page = () => {
-  return (
-    <>
-      <div className="w-full flex justify-center items-center">
-        <div className="max-w-[900px] gap-2 space-y-3 grid-cols-12 px-8">
-          <div className="space-y-1">
-            <Image
-              isBlurred
-              width={800}
-              src="https://z-p3-scontent.fpnh5-3.fna.fbcdn.net/v/t39.30808-6/452631163_466468236331968_6169447427506620773_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFIJPEdW2eyizCDUYbxrIFhvylQfmzl05a_KVB-bOXTlppnLEjMXe99GMwuLKYpOg8AoHgEG6cWfNAYHPRLH8QL&_nc_ohc=B47-lBC4neYQ7kNvgFG0sh8&_nc_zt=23&_nc_ht=z-p3-scontent.fpnh5-3.fna&oh=00_AYCFTVbw1qy2FEPypS7Mi3IrH5shQGwEgTQjhtjl24ga2w&oe=66A41392"
-              alt="NextUI Album Cover"
-            />
-            <Comment />
-          </div>
-          <div className="space-y-1">
-            <Image
-              isBlurred
-              width={800}
-              src="https://z-p3-scontent.fpnh5-3.fna.fbcdn.net/v/t39.30808-6/452631163_466468236331968_6169447427506620773_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFIJPEdW2eyizCDUYbxrIFhvylQfmzl05a_KVB-bOXTlppnLEjMXe99GMwuLKYpOg8AoHgEG6cWfNAYHPRLH8QL&_nc_ohc=B47-lBC4neYQ7kNvgFG0sh8&_nc_zt=23&_nc_ht=z-p3-scontent.fpnh5-3.fna&oh=00_AYCFTVbw1qy2FEPypS7Mi3IrH5shQGwEgTQjhtjl24ga2w&oe=66A41392"
-              alt="NextUI Album Cover"
-            />
-            <Comment />
-          </div>
-          <div className="space-y-1">
-            <Image
-              isBlurred
-              width={800}
-              src="https://z-p3-scontent.fpnh5-2.fna.fbcdn.net/v/t39.30808-6/449486521_455708230741302_5614840269922377362_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGLlPCZFsXY1TvlpByTXn-_Rakl6IXusg1FqSXohe6yDVx_3sRrR4mfEMObPAm6x5QkAkSP1me-rXaNZejgchRj&_nc_ohc=0I7J9TzeZggQ7kNvgGhcyoR&_nc_zt=23&_nc_ht=z-p3-scontent.fpnh5-2.fna&oh=00_AYBukK2ir5wLYEfBrp67HePQrMjfp-flqaB0Aa7iEUTYUg&oe=66A429F3"
-              alt="NextUI Album Cover"
-            />
-            <Comment />
-          </div>
+import { Card, CardHeader , Image } from '@nextui-org/react';
+import axios from 'axios';
+import { cos } from 'three/webgpu';
 
-
-
-        </div>
-      </div>
-    </>
-  )
-
+// Define an interface for room data
+interface RoomData {
+  id: number;
+  image: string;
+  title: string;
 }
 
-export default page;
+// Define an interface for API response
+interface ApiResponse {
+  data: RoomData[];
+}
+
+const Page: React.FC = () => {
+  // State to hold room data
+  const [data, setData] = useState<RoomData[]>([]);
+  // State to hold error messages
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get<ApiResponse>('http://127.0.0.1:8000/api/get-all-room');
+        setData(response.data.data); 
+      } catch (err: any) {
+        // Handle errors, including 404 not found
+        if (err.response && err.response.status === 404) {
+          setError('Resource not found: The requested data does not exist.');
+        } else {
+          setError('Error fetching data: ' + err.message);
+        }
+        console.error('Error fetching data:', err);
+      }
+    };
+
+    fetchData();
+  }, []);
+  console.log(data);
+
+  return (
+    <div className="flex flex-col items-center justify-center p-4 space-y-4">
+      {error && <div className="text-red-500">{error}</div>} 
+      {data.map((item) => (
+        <div key={item.id} className="space-y-1">
+          <Card className="rounded-lg shadow-lg max-w-full w-full sm:w-[400px] md:w-[600px] lg:w-[800px]">
+            <CardHeader>
+              <Image
+                className="rounded-lg"
+                src={`http://127.0.0.1:8000/RoomBooking/${item.image}`} 
+                alt={item.title}
+                width={800}
+                height={600}
+                onError={() => setError('Failed to load image: ' + item.image)} 
+              />
+            </CardHeader>
+          </Card>
+          <Comment />
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default Page;

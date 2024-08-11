@@ -3,7 +3,7 @@ import next from "next";
 import Cards from "./components/Card";
 import Comment from "./components/Comment";
 import { Card, CardHeader, CardBody, CardFooter, Image, Button } from "@nextui-org/react";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Spinner } from "@nextui-org/react";
 import { GridBackgroundDemo } from "./components/Background";
 import { HeroParallax } from "@/components/ui/hero-parallax";
@@ -12,14 +12,14 @@ import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 import { Quote } from "lucide-react";
 import { StickyScroll } from "@/components/ui/sticky-scroll-reveal";
 import { FeaturesSection } from "@/components/ui/FeaturesSection";
+import axios from 'axios';
 export default function Home() {
-  const [Loding, setLoding] = useState(false);
   const data = [
     {
       id: 1,
       owner: "Camping Park",
       image:
-        "https://z-p3-scontent.fpnh5-2.fna.fbcdn.net/v/t39.30808-6/449134791_449218654723593_9057184084313972114_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHrbiFgdftQgRfkRl2jRXDycuXqHz8ywdBy5eofPzLB0EbM63BQWXQ18z-N0e04ZiLbteAQrSSJR9kG9mHcVQiH&_nc_ohc=EVjUPCFE2r4Q7kNvgEJmUyc&_nc_zt=23&_nc_ht=z-p3-scontent.fpnh5-2.fna&oh=00_AYBUbJVzGyKW9Pb8Q-wTZW5Fx3qHPu6HijYGidZNjcWFdw&oe=66A88EA8",
+        "Camping Park",
       image1:
         "https://z-p3-scontent.fpnh5-2.fna.fbcdn.net/v/t39.30808-6/410351989_325277637117696_5252901105370254433_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeE5CeFuFsxabPa_VA82tajfoI0bttdrtj6gjRu212u2Pk2Jb-fvNGyZ1-rM-R821tjY6OSCgoSQQF563thwBUYh&_nc_ohc=QoH50AceNnkQ7kNvgHhhwh4&_nc_zt=23&_nc_ht=z-p3-scontent.fpnh5-2.fna&oh=00_AYDAxk6kTtOdVAaxSV2WI3z-VBq8kwJAfuAkogfHPpt_Ow&oe=66A863B7",
       title: "Camping Park",
@@ -159,7 +159,7 @@ export default function Home() {
       content: (
         <div className="h-full w-full  flex items-center justify-center text-white">
           <Image
-            src="https://z-p3-scontent.fpnh5-4.fna.fbcdn.net/v/t39.30808-6/449486955_453616820950443_4459634880877403890_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGSDMXPYrtou0_myNBMLqMudISNKiV7cJR0hI0qJXtwlFJ_FQ84Gm2n4WE_Y7KNonGahAcYJvzieKT4IwHSjym6&_nc_ohc=HUWtRp8EjfQQ7kNvgEGJ1lr&_nc_zt=23&_nc_ht=z-p3-scontent.fpnh5-4.fna&oh=00_AYDzJpxjcDhAJkZsvK4FBn_VJUG6xbD8NkeorANMET9W8A&oe=66A9954A"
+            src="https://z-p3-scontent.fpnh5-2.fna.fbcdn.net/v/t39.30808-6/449292838_453614660950659_8607656167924627046_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGMNknE4nYM7K2cQwKz0YMN-Cr3GnvEkrD4Kvcae8SSsAIEDV7W94LARIhHJg4aVi-ZHgju_5pCIIXtNf38aNz9&_nc_ohc=nNv9QOi359EQ7kNvgEBETLB&_nc_zt=23&_nc_ht=z-p3-scontent.fpnh5-2.fna&oh=00_AYDhCICcOYZY-A4ZmmORQGeYnGVxQSOI5jTVmXhwsMb5_A&oe=66B6A90F"
             width={290}
             height={250}
             className="h-full w-full object-cover"
@@ -175,7 +175,7 @@ export default function Home() {
       content: (
         <div className="h-full w-full  flex items-center justify-center text-white">
           <Image
-            src="https://z-p3-scontent.fpnh5-1.fna.fbcdn.net/v/t39.30808-6/448571079_445235835121875_5407601214519947212_n.jpg?stp=dst-jpg_p600x600&_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeE8PRTsEjy5fzUh9z4GP6s80GU-JFpO6cDQZT4kWk7pwNjk0_GnAdP9IA7QDo1B4wCigOnQYKkwuy0dsQ2nXUZq&_nc_ohc=W-GZS-dCUdoQ7kNvgGG_MQk&_nc_zt=23&_nc_ht=z-p3-scontent.fpnh5-1.fna&oh=00_AYCx22oVNAAdOZ2jpCKBDZDZlh5jluzyugJDQRfSWu5bTw&oe=66A9AF8F"
+            src="https://z-p3-scontent.fpnh5-1.fna.fbcdn.net/v/t39.30808-6/448561041_445235855121873_6095861498981604355_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHpHDYEsznVdNZcb9VYw6Cx0Nqn-gVV5iLQ2qf6BVXmIsRi4u-HyUaByXzZh35p2cg282E5pekAhQAY_Ji3VpXL&_nc_ohc=C_SwbrdtXLoQ7kNvgE9dspS&_nc_zt=23&_nc_ht=z-p3-scontent.fpnh5-1.fna&oh=00_AYDkqwWNJz7rXBHvJEIN5h3rXH_4W-1d_Psr-cOvMM0CMQ&oe=66B69A64"
             width={290}
             height={250}
             className="h-full w-full object-cover"
@@ -191,7 +191,7 @@ export default function Home() {
       content: (
         <div className="h-full w-full  flex items-center justify-center text-white">
           <Image
-            src="https://z-p3-scontent.fpnh5-2.fna.fbcdn.net/v/t39.30808-6/452283845_466467476332044_1396243883778571037_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGX3b5VqoixmmZ-7HOOV-GbF715aoOPWhAXvXlqg49aEA1-WwDxN7Y2vhG7WYImFtPsTNffx7aAlN6dizRQYR5K&_nc_ohc=pA6jNU83yu8Q7kNvgGvf7Gn&_nc_zt=23&_nc_ht=z-p3-scontent.fpnh5-2.fna&oh=00_AYAG50G1gljYjw0H3v_wW0yfzL9pM0QmyR2qPOYMbdAD6Q&oe=66AAED24"
+            src="https://z-p3-scontent.fpnh5-2.fna.fbcdn.net/v/t39.30808-6/448656874_445235935121865_3166320948652449355_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEE3KjPQYcZrcUpnjLpz0j3IPo1d88fYHYg-jV3zx9gdglaBAFjl87NcRxrEALfjaEaiQpghZ5RPlA84PPQNy74&_nc_ohc=2HUnw6PUh2EQ7kNvgF2ShTU&_nc_zt=23&_nc_ht=z-p3-scontent.fpnh5-2.fna&oh=00_AYBB2JjwZzyCSyffh_yWpNGYc0AmKvs8ePbO9gL01RMvXg&oe=66B6A9B4"
             width={290}
             height={250}
             className="h-full w-full object-cover"
@@ -205,7 +205,7 @@ export default function Home() {
   return (
     <>
       <HeroParallax products={products}/>
-      <div className="md:-mt-[15rem]"></div>
+      <div className="sm:-mt-[65rem] xl:-mt-[60rem]"></div>
       <FeaturesSection/>
       <StickyScroll content={content} />
         <InfiniteMovingCards className="flex items-center min-w-full"

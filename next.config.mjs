@@ -11,6 +11,7 @@ const nextConfig = {
       'z-p3-scontent.fpnh5-4.fna.fbcdn.net',
       'z-p3-scontent.fpnh5-6.fna.fbcdn.net',
       'assets.aceternity.com',
+      'images.unsplash.com'
     ],
   },
   remotePatterns: [

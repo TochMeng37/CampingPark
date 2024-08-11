@@ -2,43 +2,43 @@ import { cn } from "@/lib/utils";
 import {
   IconAdjustmentsBolt,
   IconCloud,
-  IconCurrencyDollar,
-  IconEaseInOut,
+  IconSunset2,
+  IconChefHat,
   IconHeart,
   IconHelp,
-  IconRouteAltLeft,
-  IconTerminal2,
+  IconHeartBolt,
+  IconFlower,
 } from "@tabler/icons-react";
 
 export function FeaturesSection() {
   const features = [
     {
-      title: "Built for developers",
+      title: " ម្ហូបអាហារមិនបាច់ទិញពីក្រោមក៏បាន",
       description:
-        "Built for engineers, developers, dreamers, thinkers and doers.",
-      icon: <IconTerminal2 />,
+        "រាល់បន្លែដែលបានថែរក្សាដាំដុះពីកសិដ្ឋានជាតម្រូវការក្នុងការផ្គត់ផ្គងទៅដល់ភោជនីយដ្ឋានរបស់ពួកយើងដើម្បីអោយបងប្អូនបានទទួលទាននិងសាករសជាតិធម្មជាតិពិតៗនៅ ឧទ្យានបោះតង់",
+      icon: <IconFlower />,
     },
     {
-      title: "Ease of use",
+      title: "ភោជនីយដ្ឋានមានលក់អាហារបីពេល ហាងកាហ្វេក៏ដូចជាមីនីម៉ាត",
       description:
         "It's as easy as using an Apple, and as expensive as buying one.",
-      icon: <IconEaseInOut />,
+      icon: <  IconChefHat/>,
     },
     {
-      title: "Pricing like no other",
+      title: "ខែបោះតង់មើលថ្ងៃលិច",
       description:
-        "Our prices are best in the market. No cap, no lock, no credit card required.",
-      icon: <IconCurrencyDollar />,
+        " កំពុងពេញនិយមខ្លាំងបំផុតនៅឧទ្យានបោះតង់ក្នុងរដូវនេះ ល្ងាចឡើងត្រជាក់ៗអង្គុយអាំងភ្លើង ញំាគោឡើងភ្នំក្តៅហ៊ុយៗ",
+      icon: <IconSunset2 />,
     },
     {
-      title: "100% Uptime guarantee",
-      description: "We just cannot be taken down by anyone.",
+      title: "ទោះបីជាខែវស្សា ធ្លាក់ភ្លៀងបន្តិចមែន",
+      description: "ប៉ុន្តែសម្រាប់បងប្អូនដែរបានមកលេងឧទ្យានបោះតង់នៅតែពេញចិត្ត",
       icon: <IconCloud />,
     },
     {
-      title: "Multi-tenant Architecture",
-      description: "You can simply share passwords instead of buying new seats",
-      icon: <IconRouteAltLeft />,
+      title: "ឧទ្យានបោះតង់បៀបបានដូចជាឋានសួគ៍",
+      description: "សមុទ្រពពក, កន្លែងបំបាត់នៅស្ត្រេស ទុក្ខកង្វល់ បង្កើតនៅស្នាមញញឹមនិងភាពរីករាយដល់អ្នកទាំងអស់គ្នា",
+      icon: <IconHeartBolt />,
     },
     {
       title: "24/7 Customer Support",
@@ -46,20 +46,9 @@ export function FeaturesSection() {
         "We are available a 100% of the time. Atleast our AI Agents are.",
       icon: <IconHelp />,
     },
-    {
-      title: "Money back guarantee",
-      description:
-        "If you donot like EveryAI, we will convince you to like us.",
-      icon: <IconAdjustmentsBolt />,
-    },
-    {
-      title: "And everything else",
-      description: "I just ran out of copy ideas. Accept my sincere apologies",
-      icon: <IconHeart />,
-    },
   ];
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  relative z-10 py-10 max-w-7xl mx-auto">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 relative z-10 py-10 max-w-7xl mx-auto">
       {features.map((feature, index) => (
         <Feature key={feature.title} {...feature} index={index} />
       ))}
